@@ -1,0 +1,18 @@
+H1 {
+    font-size: 55px;
+    color: white
+}
+
+body {
+    background: black;
+    text-align: center;
+    font-family: monospace;
+}
+
+.button {
+    color: black;
+}
+
+.button:visited {
+     color: black;
+}
