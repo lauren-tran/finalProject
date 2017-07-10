@@ -6,7 +6,7 @@ window.onload = function () {
     });
 
     game.state.add('start', startState(game))
-    game.state.add("pause", pause(game))
+    game.state.add('pause', pause(game))
 
-    game.state.start('pause')
+    game.state.start('start')
 }
