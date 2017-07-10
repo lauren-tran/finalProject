@@ -16,3 +16,4 @@ window.onload = function () {
 }
 // switch to scroll updards
 //this.game.world.setBounds(0, 0, 3500, this.game.height);
+

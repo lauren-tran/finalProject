@@ -4,7 +4,9 @@ function startState (game) {
     var setupPlatform
     return {
         preload(){
+
             game.load.spritesheet('skeleton','images/skeleton.png',64,64);
+            game.load.spritesheet('gold','images/coin_gold.png',32,32);
             game.load.image('background','images/bg.jpg');
             game.load.image('platform2','images/platform2.png');
         },
@@ -21,9 +23,16 @@ function startState (game) {
             // create player
             skeleton = game.add.sprite(this.game.width/2, game.world._height,'skeleton');
             
+            //create coin
+            gold = game.add.sprite(32,32,'gold');
+            
             // create player animations
             skeleton.animations.add('walkup', [0,1,2,3,4,5,6,7,8]);
             skeleton.animations.play('walkup', 50, true);
+            
+            //add gold coin
+            gold.animations.add('gold', [0,1,2,3,4,5,6,7]);
+            gold.animations.play('gold', 50, true);
             
             // create player physics
             game.physics.arcade.enable(skeleton)
@@ -54,8 +63,6 @@ function startState (game) {
             if(cursors.right.isDown){
                 skeleton.body.velocity.x = 100
             }
-
-        
         }
     }
 }
