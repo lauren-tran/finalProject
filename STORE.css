@@ -12,3 +12,11 @@ body{
 #buttons{
     text-align: center;
 }
+
+.button {
+    color: black;
+}
+
+.button:visited {
+    color: black;
+}

@@ -6,14 +6,14 @@ var gameTitle = {
             
     this.game.load.image('powerupbutton','image/powerupbutton.png');
         
-        This.game.load.image('charctersbutton','image/charctersbutton.png');
+        This.game.load.image('charactersbutton','image/charactersbutton.png');
         
         
     },
      
     create: function(){
         
-     this.game.stage.backgroundColor = red;
+     this.game.stage.backgroundColor= black;
         
      var gameTitle = this.game.add.sprite(385,100,'gameTitle');
         
@@ -27,7 +27,7 @@ var gameTitle = {
         
         PowerButton.anchor.setTo(0.5,0.5);
         
-        var charctersbutton = this.game.add.button(385,550,'charctersbutton',this.playThegame,null,this);
+        var charctersbutton = this.game.add.button(385,550,'charactersbutton',this.playThegame,null,this);
         
         PowerButton.anchor.setTo(0.5,0.5);
         
