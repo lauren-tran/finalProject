@@ -37,6 +37,6 @@ function gameStore(game) {
         
             poweruppage: function() {
                 this.game.state.start('powerup');
-        }
+            }
     }
 }

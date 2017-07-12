@@ -16,8 +16,23 @@ function gameTitle(game) {
             gameTitle.anchor.setTo(0.5, 0.5);
 
             var play = this.game.add.button(168, 300, 'play', this.playTheGame, null, this);
+            
+            var playButton=
+                game.add.button(385,250,'playButton',function (){
+                    game.state.start('start')
+                })
+            playButton.anchor.setTo(0.5,0.5);
 
-            var store = this.game.add.button(168, 450, 'store', this.store, null, this);
+            playButton.scale.setTo(0.5,0.5);
+
+
+            var shopButton = 
+                game.add.button(385,350,'shopButton',function(){
+                    game.state.start('store');
+                })
+            shopButton.scale.setTo(0.5)
+
+            shopButton.anchor.setTo(0.5,0.5);
             
             var missions = this.game.add.button(350, 450, 'missions', this.missions, null, this);
             
