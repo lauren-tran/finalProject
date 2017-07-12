@@ -19,7 +19,7 @@ function gameOver(game) {
             
             var mainMenu = 
                 game.add.button(500,490,"mainMenu", function (){
-                    gmae.state.start('title')
+                    game.state.start('title');
                 })
                 mainMenu.anchor.setTo(0.5,0.5);
         }

@@ -27,7 +27,7 @@ function gameTitle(game) {
 
             var shopButton = 
                 game.add.button(385,350,'shopButton',function(){
-                    game.state.start('')
+                    game.state.start('store');
                 })
             shopButton.scale.setTo(0.5)
 

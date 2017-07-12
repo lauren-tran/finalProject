@@ -9,6 +9,7 @@ window.onload = function () {
     game.state.add("pause", pause(game));
     game.state.add('title', gameTitle(game));
     game.state.add('gameOver', gameOver(game));
+    game.state.add('store', store(game));
 
  
     game.state.start('title');
