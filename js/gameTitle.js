@@ -15,6 +15,7 @@ function gameTitle(game) {
             var gameTitle = this.game.add.sprite(400, 100, 'gameTitle');
             gameTitle.anchor.setTo(0.5, 0.5);
 
+
             var store = this.game.add.button(168, 450, 'store', this.store, null, this);
             var playButton=
                 game.add.button(385,250,'play2',function (){
@@ -23,6 +24,14 @@ function gameTitle(game) {
             playButton.anchor.setTo(0.5,0.5);
 
             playButton.scale.setTo(0.5,0.5);
+
+            var shopButton = 
+                game.add.button(385,350,'shopButton',function(){
+                    game.state.start('store');
+                })
+            shopButton.scale.setTo(0.5)
+
+            shopButton.anchor.setTo(0.5,0.5);
 
             
             var missions = this.game.add.button(350, 450, 'missions', this.missions, null, this);

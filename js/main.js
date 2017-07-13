@@ -10,9 +10,11 @@ window.onload = function () {
     game.state.add('pause', pause(game));
     game.state.add('title', gameTitle(game));
     game.state.add('gameOver', gameOver(game));
+
     game.state.add('store', gameStore(game));
     //game.state.add('missions', missions(game));
     //game.state.add('leaderboard', leaderboard(game));
+
  
     game.state.start('title');
     window.game = game;

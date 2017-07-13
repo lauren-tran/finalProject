@@ -1,3 +1,4 @@
+
 function gameStore(game) {
     
     return {
@@ -83,8 +84,14 @@ function gameStore(game) {
             this.game.state.start('title');
         },
         
+
         playTheGame: function () {
             this.game.state.start('start');
-        }
+        },
+
+            poweruppage: function() {
+                this.game.state.start('powerup');
+            }
+
     }
 }

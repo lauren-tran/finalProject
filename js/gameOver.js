@@ -18,8 +18,10 @@ function gameOver(game) {
             
             
             var mainMenu = 
+
                 game.add.button(430,490,"menu2", function (){
                     game.state.start('title')
+
                 })
                 mainMenu.anchor.setTo(0.5,0.5);
         }
