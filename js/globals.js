@@ -1,1 +1,1 @@
-window.money = 500
+window.money = 500;

@@ -1,21 +1,36 @@
 function startState(game) {
     var skeleton;
+    var score;
+    var text;
     var cursors;
     var setupPlatform;
     var movePlatform;
     var platforms;
-    var score = 0;
     var scoreText;
+    
     return {
-        preload: function() {
-
+        preload: function () {
             game.load.spritesheet('skeleton', 'images/skeleton.png', 64, 64);
+            
             game.load.spritesheet('gold', 'images/coin_gold.png', 32, 32);
             game.load.image('background', 'images/b.gif');
             game.load.image('platform2', 'images/platform2.png');
             game.load.image('movingplatform',"images/movingPlatform.png")
+             game.load.spritesheet('silver', 'images/coin_silver.png', 32, 32);
+            
+            game.load.spritesheet('copper', 'images/coin_copper.png', 32, 32);
+            
+            game.load.image('background', 'images/bg.jpg');
+            
+            game.load.image('platform2', 'images/platform2.png');
+            
+            this.game.load.image('pause', 'images/pause2.png');
+            
+            this.game.load.image('coin', 'images/coins2.png');
         },
         create: function() {
+            
+            score = 0;
             // setup world
             game.world.setBounds(0, 0, 800, this.game.height + 5000);
 
@@ -46,6 +61,10 @@ function startState(game) {
             gold.animations.add('gold', [0, 1, 2, 3, 4, 5, 6, 7]);
             gold.animations.play('gold', 50, true)
             
+            // create player physics
+            game.physics.arcade.enable(skeleton);
+            skeleton.body.gravity.y = 500;
+            
             setupPlatform = game.add.physicsGroup();
             
             //creates platforms
@@ -75,11 +94,28 @@ function startState(game) {
 
             // setup keyboard
             cursors = game.input.keyboard.createCursorKeys();
+            
+            gold = game.add.group();
+            gold.enableBody = true;
+            for (var i = 0; i < 50; i++) {
+                gold.create(game.world.randomX, game.world.randomY, 'gold', 0);
+            }
+            gold.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);
+            gold.callAll('animations.play', 'animations', 'spin');
+            
+            var style = { font: "24px Arial", fill: "#FFD700", align: "right" };
+            text = game.add.text(20, 35, `Score: ${score}`, style);
+            text.fixedToCamera = true;
+            
+            
+            var pause = this.game.add.button(350, 50, 'pause', this.pauseScreen, null, this);
+            pause.anchor.setTo(0.5, 0.5);
 
         },
         update: function() {
             game.physics.arcade.collide(skeleton, setupPlatform)
-            
+            game.world.wrap(skeleton, 0, true, true, true)
+                
             if (cursors.left.isDown) {
                 skeleton.body.velocity.x = -200;
             } else if (cursors.right.isDown) {
@@ -87,11 +123,11 @@ function startState(game) {
             } else {
                 skeleton.body.velocity.x = 0;
             }
+            
             if( cursors.up.isDown && (skeleton.body.touching.down || skeleton.body.onFloor() )) {
                 skeleton.body.velocity.y = -550;
             }
             
-            game.world.wrap(skeleton, 0, true, true, true)
             
             if (game.camera.y > skeleton.position.y-(game.height/2)) {
                 game.camera.focusOn(skeleton)
@@ -100,6 +136,8 @@ function startState(game) {
             if (game.camera.y + game.height < skeleton.position.y) {
                 this.state.start("gameOver")
             }
+            
+            game.physics.arcade.overlap(skeleton, gold, this.collectGold, null, this);
 
         },
         makePlatform(x, y) {
@@ -116,7 +154,13 @@ function startState(game) {
                 x: p.position.x - xdiff    
             }, 3000, Phaser.Easing.Linear.None, true, 0, -1, true);
         },
-        
-        
-    }       
+        collectGold: function(player, coin) {    
+            coin.kill ();
+            score = score+10;
+            text.setText(`Score: ${score}`);
+        },
+        togglePause: function () {
+                game.physics.arcade.isPaused = !game.physics.arcade.isPaused;
+        }
+    }                  
 }
