@@ -3,7 +3,7 @@ function gameTitle(game) {
         preload: function(){
            game.load.image('shopButton', 'images/shopButton.png');
             
-            game.load.image('playButton', 'images/playButton.png');
+            game.load.image('play2', 'images/play2.png');
             
             game.load.image('missionsButton', 'images/missionsButton.png');
             
@@ -17,7 +17,7 @@ function gameTitle(game) {
             gameTitle.anchor.setTo(0.5,0.5);
 
             var playButton=
-                game.add.button(385,250,'playButton',function (){
+                game.add.button(385,250,'play2',function (){
                     game.state.start('start')
                 })
             playButton.anchor.setTo(0.5,0.5);

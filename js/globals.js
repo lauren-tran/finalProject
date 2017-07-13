@@ -1,0 +1,1 @@
+window.money = 500
