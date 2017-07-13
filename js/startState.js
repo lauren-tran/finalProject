@@ -134,7 +134,7 @@ function startState(game) {
             }
         
             if (game.camera.y + game.height < skeleton.position.y) {
-                this.state.start("gameOver");
+                this.state.start("gameOver", false, false, score);
             }
             
             game.physics.arcade.overlap(skeleton, gold, this.collectGold, null, this);
