@@ -7,7 +7,6 @@ function gameTitle(game) {
             
             game.load.image('missions', 'images/missions2.png');
             
-            game.load.image('leaderboard', 'images/leader2.png');
         },
         
         create: function () {
@@ -25,18 +24,14 @@ function gameTitle(game) {
 
             playButton.scale.setTo(0.5,0.5);
 
-            var shopButton = 
-                game.add.button(385,350,'shopButton',function(){
-                    game.state.start('store');
-                })
             shopButton.scale.setTo(0.5)
 
             shopButton.anchor.setTo(0.5,0.5);
 
             
-            var missions = this.game.add.button(350, 450, 'missions', this.missions, null, this);
+            var missions = this.game.add.button(350, 450, 'missions', this.missions2, null, this);
             
-            var leaderboard = this.game.add.button(532, 450, 'leaderboard', this.leader, null, this);
+            var leaderboard = this.game.add.button(532, 450, 'leaderboard', this.leaderboard, null, this);
         },
     
         playTheGame: function () {
@@ -48,7 +43,7 @@ function gameTitle(game) {
         },
         
         missions: function () {
-            this.game.state.start('missions');
+            this.game.state.start('missions2');
         },
         
         leader: function () {
