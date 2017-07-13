@@ -3,7 +3,7 @@ function store(game) {
         preload: function(){
             game.load.image('menu', '../images/menubutton.png');
             game.load.image('back', '../images/backbutton.png');
-            game.load.image('powerup', '../images/powerupbutton.png');
+           game.load.image('powerup','../images/powerupbutton.png');
         },
         
         create: function(){
