@@ -8,35 +8,31 @@ function gameTitle(game) {
             game.load.image('missions', 'images/missions2.png');
             
             game.load.image('leaderboard', 'images/leader2.png');
+            
+            game.load.image('background','images/ml.jpg')
         },
         
         create: function () {
+            
+             background = game.add.tileSprite(0, 0, game.world._width, game.world._height, 'background');
             
             var gameTitle = this.game.add.sprite(400, 100, 'gameTitle');
             gameTitle.anchor.setTo(0.5, 0.5);
 
 
-            var store = this.game.add.button(168, 450, 'store', this.store, null, this);
+            var store = this.game.add.button(270, 450, 'store', this.store, null, this);
+
             var playButton=
-                game.add.button(385,250,'play2',function (){
+                game.add.button(110,450,'play2',function (){
                     game.state.start('start')
                 })
-            playButton.anchor.setTo(0.5,0.5);
 
-            playButton.scale.setTo(0.5,0.5);
-
-            var shopButton = 
-                game.add.button(385,350,'shopButton',function(){
-                    game.state.start('store');
-                })
-            shopButton.scale.setTo(0.5)
-
-            shopButton.anchor.setTo(0.5,0.5);
-
+          
             
-            var missions = this.game.add.button(350, 450, 'missions', this.missions, null, this);
             
-            var leaderboard = this.game.add.button(532, 450, 'leaderboard', this.leader, null, this);
+            var missions = this.game.add.button(430, 450, 'missions', this.missions, null, this);
+            
+            var leaderboard = this.game.add.button(590, 450, 'leaderboard', this.leader, null, this);
         },
     
         playTheGame: function () {

@@ -42,7 +42,7 @@ function startState(game) {
             
              // create player
             skeleton = game.add.sprite(this.game.width / 2, game.world._height - 125, 'skeleton');
-            this.world.wrap( skeleton, skeleton.width / 2, false )
+            this.world.wrap( skeleton, skeleton.width / 2, false );
             
             // create player animations
             skeleton.animations.add('walkup', [0, 1, 2, 3, 4, 5, 6, 7, 8]);
@@ -59,11 +59,11 @@ function startState(game) {
             
             //add gold coin
             gold.animations.add('gold', [0, 1, 2, 3, 4, 5, 6, 7]);
-            gold.animations.play('gold', 50, true)
+            gold.animations.play('gold', 50, true);
             
             // create player physics
             game.physics.arcade.enable(skeleton);
-            skeleton.body.gravity.y = 500;
+            skeleton.body.gravity.y = 900;
             
             setupPlatform = game.add.physicsGroup();
             
@@ -83,7 +83,7 @@ function startState(game) {
             
             //generates moving platforms
             for ( var h = 1; h < 100; h+=3){
-                var x = h % 2 == 0 ? 150 : 500
+                var x = h % 2 == 0 ? 150 : 500;
                 this.makeMovingPlatform(x, game.world._height - (h*100), 0, 400);
             }
             
@@ -130,11 +130,11 @@ function startState(game) {
             
             
             if (game.camera.y > skeleton.position.y-(game.height/2)) {
-                game.camera.focusOn(skeleton)
+                game.camera.focusOn(skeleton);
             }
         
             if (game.camera.y + game.height < skeleton.position.y) {
-                this.state.start("gameOver")
+                this.state.start("gameOver");
             }
             
             game.physics.arcade.overlap(skeleton, gold, this.collectGold, null, this);

@@ -9,6 +9,8 @@ function gameOver(game) {
         create: function(){
             background = game.add.tileSprite(-250,0,1500,700,'gameOver')
             
+            
+            
             var restartB = 
                 game.add.button(300,490,"restart2", function () {
                     game.state.start('start')
