@@ -3,7 +3,7 @@ function gameTitle(game) {
         preload: function () {
             game.load.image('store', 'images/store2.png');
             
-            game.load.image('play', 'images/playbutton.png');
+            game.load.image('play2', 'images/play2.png');
             
             game.load.image('missions', 'images/missions2.png');
             
@@ -15,9 +15,15 @@ function gameTitle(game) {
             var gameTitle = this.game.add.sprite(400, 100, 'gameTitle');
             gameTitle.anchor.setTo(0.5, 0.5);
 
-            var play = this.game.add.button(168, 300, 'play', this.playTheGame, null, this);
-
             var store = this.game.add.button(168, 450, 'store', this.store, null, this);
+            var playButton=
+                game.add.button(385,250,'play2',function (){
+                    game.state.start('start')
+                })
+            playButton.anchor.setTo(0.5,0.5);
+
+            playButton.scale.setTo(0.5,0.5);
+
             
             var missions = this.game.add.button(350, 450, 'missions', this.missions, null, this);
             

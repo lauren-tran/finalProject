@@ -2,7 +2,8 @@ window.onload = function () {
     var game = new Phaser.Game({
         height: 600,
         width: 800,
-        parent: document.getElementById("main")
+        parent: document.getElementById("main"),
+        renderer: Phaser.AUTO
     });
 
     game.state.add('start', startState(game));
