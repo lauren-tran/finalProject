@@ -5,15 +5,10 @@ function gameTitle(game) {
             
             game.load.image('play2', 'images/play2.png');
             
-            game.load.image('missions', 'images/missions2.png');
-            
-<<<<<<< HEAD
             game.load.image('leaderboard', 'images/leader2.png');
+            game.load.image('background','images/ml.jpg');
+            game.load.image('mission', 'images/missions2.png');
             
-            game.load.image('background','images/ml.jpg')
-=======
-            game.load.images('leaderboard', 'images/leader2.png');
->>>>>>> alishia
         },
         
         create: function () {
