@@ -7,6 +7,7 @@ function gameTitle(game) {
             
             game.load.image('missions', 'images/missions2.png');
             
+            game.load.images('leaderboard', 'images/leader2.png');
         },
         
         create: function () {
