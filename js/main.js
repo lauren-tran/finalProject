@@ -13,7 +13,8 @@ window.onload = function () {
 
     game.state.add('store', gameStore(game));
     //game.state.add('missions', missions(game));
-    //game.state.add('leaderboard', leaderboard(game));
+
+    game.state.add('leaderboard', leaderboard(game));
 
  
     game.state.start('title');

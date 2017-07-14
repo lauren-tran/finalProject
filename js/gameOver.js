@@ -6,6 +6,7 @@ function gameOver(game) {
             game.load.image('menu2', 'images/menu2.png');
             game.load.image('gameOver','images/gameOver.jpg');
             game.load.image('store', 'images/store2.png');
+            game.load.image('leaderboard','images/leader2.png');
         },
         init: function(_score) {
           score = _score; 
@@ -20,25 +21,35 @@ function gameOver(game) {
             text.anchor.set(0.5);
             
             var restartB = 
-                game.add.button(160,490,"restart2", function () {
+                game.add.button(150,490,"restart2", function () {
                     game.state.start('start')
                 })
                 restartB.anchor.setTo(0.5,0.5);
             
             var store = 
-                game.add.button(385,490,'store', function(){
+                game.add.button(300,490,'store', function(){
                     game.state.start('store')
                 })
                 store.anchor.setTo(0.5,0.5);
+            
+            var leaderboard = 
+                game.add.button(450, 490,'leaderboard',function(){
+                    game.state.start('leaderboard')
+                })
+                leaderboard.anchor.setTo(0.5,0.5);
             
             
             
             var mainMenu = 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                 game.add.button(430,490,"menu2", function (){
 =======
                 game.add.button(600,490,"menu2", function (){
+>>>>>>> new
+=======
+                game.add.button(610,490,"menu2", function (){
 >>>>>>> new
                     game.state.start('title')
 

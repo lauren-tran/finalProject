@@ -7,6 +7,7 @@ function gameTitle(game) {
             
             game.load.image('leaderboard', 'images/leader2.png');
             game.load.image('background','images/ml.jpg');
+
             game.load.image('mission', 'images/missions2.png');
             
         },
@@ -15,7 +16,7 @@ function gameTitle(game) {
             
              background = game.add.tileSprite(0, 0, game.world._width, game.world._height, 'background');
             
-            var style = { font: "150px Ariel", fill: "#FFFFFF"};
+            var style = { font: "150px Arial", fill: "#FFFFFF"};
 
             var text = game.add.text(game.world._width/2, 150, `Lemonade`, style);
 
@@ -30,12 +31,14 @@ function gameTitle(game) {
             /*
             var gameTitle = this.game.add.sprite(400, 100, 'gameTitle');
             gameTitle.anchor.setTo(0.5, 0.5);
+<<<<<<< HEAD
             
             
             */    
             
             var playButton=
                 game.add.button(110,450,'play2',function (){
+
                     game.state.start('start')
                 })
 
