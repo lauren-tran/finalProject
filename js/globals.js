@@ -8,6 +8,8 @@ window.currentCharacter = "construction"
 
 window.ownedCharacters = ["construction"]
 
+window.highScore = []
+
 window.characterPrice = {
     construction: 100,
     scientist: 100, 

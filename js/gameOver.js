@@ -41,16 +41,9 @@ function gameOver(game) {
             
             
             var mainMenu = 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-                game.add.button(430,490,"menu2", function (){
-=======
                 game.add.button(600,490,"menu2", function (){
->>>>>>> new
-=======
-                game.add.button(610,490,"menu2", function (){
->>>>>>> new
+
                     game.state.start('title')
 
                 })

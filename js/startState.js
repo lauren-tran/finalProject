@@ -25,7 +25,7 @@ function startState(game) {
             game.load.spritesheet('copper', 'images/coin_copper.png', 32, 32);
             game.load.image('background', 'images/bg.jpg');
             game.load.image('platform2', 'images/platform2.png');
-            game.load.image('pause', 'images/pause2.png');
+            game.load.image('pause', 'images/pause.png');
             game.load.image('coin', 'images/coins2.png');
 
             this.game.load.image('background', 'images/b.gif');
