@@ -16,10 +16,27 @@ function gameTitle(game) {
             
              background = game.add.tileSprite(0, 0, game.world._width, game.world._height, 'background');
             
+            var style = { font: "150px Ariel", fill: "#FFFFFF"};
+
+            var text = game.add.text(game.world._width/2, 150, `Lemonade`, style);
+
+            text.anchor.set(0.5);
+            
+            var style = { font: "150px Arial", fill: "#FFFFFF"};
+
+            var text = game.add.text(game.world._width/2, 300, `Mouth`, style);
+
+            text.anchor.set(0.5);
+            
+            /*
             var gameTitle = this.game.add.sprite(400, 100, 'gameTitle');
             gameTitle.anchor.setTo(0.5, 0.5);
+<<<<<<< HEAD
 
 
+=======
+            */    
+>>>>>>> new
             var store = this.game.add.button(270, 450, 'store', this.store, null, this);
 
             var playButton=
