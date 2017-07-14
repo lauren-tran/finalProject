@@ -11,22 +11,16 @@ function startState(game) {
     return {
         preload: function () {
             game.load.spritesheet('skeleton', 'images/skeleton.png', 64, 64);
-            
             game.load.spritesheet('gold', 'images/coin_gold.png', 32, 32);
             game.load.image('background', 'images/b.gif');
             game.load.image('platform2', 'images/platform2.png');
             game.load.image('movingplatform',"images/movingPlatform.png")
-             game.load.spritesheet('silver', 'images/coin_silver.png', 32, 32);
-            
+            game.load.spritesheet('silver', 'images/coin_silver.png', 32, 32);
             game.load.spritesheet('copper', 'images/coin_copper.png', 32, 32);
-            
             game.load.image('background', 'images/bg.jpg');
-            
             game.load.image('platform2', 'images/platform2.png');
-            
-            this.game.load.image('pause', 'images/pause2.png');
-            
-            this.game.load.image('coin', 'images/coins2.png');
+            game.load.image('pause', 'images/pause2.png');
+            game.load.image('coin', 'images/coins2.png');
         },
         create: function() {
             
@@ -133,7 +127,9 @@ function startState(game) {
                 game.camera.focusOn(skeleton);
             }
         
+            
             if (game.camera.y + game.height < skeleton.position.y) {
+                window.highScore.push(score);
                 this.state.start("gameOver", false, false, score);
             }
             
@@ -162,5 +158,6 @@ function startState(game) {
         togglePause: function () {
                 game.physics.arcade.isPaused = !game.physics.arcade.isPaused;
         }
+        
     }                  
 }
