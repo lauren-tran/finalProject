@@ -36,32 +36,74 @@ function gameStore(game) {
             var play = this.game.add.button(115, 50, 'play', this.playTheGame, null, this);
             play.anchor.setTo(0.5, 0.5);
             
-            var charcost = this.game.add.button(125, 360, 'charcost', this.char, null, this);
+            for (var i = 0; i < window.characters.length/2; i++) {
+                var char = window.characters[i]
+                
+                console.log(125+(137.5*i))
+                
+                if (window.ownedCharacters.includes(char)) {
+                    var style = { font: "12px Arial", fill: "#FFFFFF"};
+                    var text = game.add.text(125+(137.5*i), 360, "already owned", style);
+                    text.anchor.set(0.5);
+                } else if (window.characterPrice[char] === 100) {
+                    var charcost = this.game.add.button(125+(137.5*i), 360, 'charcost', this.char(char), null, this);
+                    charcost.anchor.setTo(0.5, 0.5);
+                } else if (window.characterPrice[char] === 200) {
+                    var charcost = this.game.add.button(125+(137.5*i), 360, 'charcost2', this.char(char), null, this);
+                    charcost.anchor.setTo(0.5, 0.5);
+                } else {
+                    throw new Error("WUT?")
+                }
+            }
+            
+            for (var i = 0; i < window.characters.length/2; i++) {
+                var char = window.characters[i+window.characters.length/2]
+                
+                console.log(char);
+                
+                if (window.ownedCharacters.includes(char)) {
+                    var style = { font: "12px Arial", fill: "#FFFFFF"};
+                    var text = game.add.text(125+(137.5*i), 530, "already owned", style);
+                    text.anchor.set(0.5);
+                } else if (window.characterPrice[char] === 100) {
+                    var charcost = this.game.add.button(125+(137.5*i), 530, 'charcost', this.char(char), null, this);
+                    charcost.anchor.setTo(0.5, 0.5);
+                } else if (window.characterPrice[char] === 200) {
+                    var charcost = this.game.add.button(125+(137.5*i), 530, 'charcost2', this.char(char), null, this);
+                    charcost.anchor.setTo(0.5, 0.5);
+                } else {
+                    throw new Error("WUT?")
+                }
+            }
+            
+            /*
+            var charcost = this.game.add.button(125, 360, 'charcost', this.char("construction"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
-            var charcost = this.game.add.button(262.5, 360, 'charcost', this.char, null, this);
+            var charcost = this.game.add.button(262.5, 360, 'charcost', this.char("scientist"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
-            var charcost = this.game.add.button(400, 360, 'charcost', this.char, null, this);
+            var charcost = this.game.add.button(400, 360, 'charcost', this.char("police"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
-            var charcost = this.game.add.button(537.5, 360, 'charcost', this.char, null, this);
+            var charcost = this.game.add.button(537.5, 360, 'charcost', this.char("medic"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
-            var charcost = this.game.add.button(675, 360, 'charcost', this.char, null, this);
+            var charcost = this.game.add.button(675, 360, 'charcost', this.char("agent"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
             
-            var charcost = this.game.add.button(125, 530, 'charcost2', this.char, null, this);
+            var charcost = this.game.add.button(125, 530, 'charcost2', this.char("policeWoman"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
-            var charcost = this.game.add.button(262.5, 530, 'charcost2', this.char, null, this);
+            var charcost = this.game.add.button(262.5, 530, 'charcost2', this.char("medicWoman"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
-            var charcost = this.game.add.button(400, 530, 'charcost2', this.char, null, this);
+            var charcost = this.game.add.button(400, 530, 'charcost2', this.char("skeleton"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
-            var charcost = this.game.add.button(537.5, 530, 'charcost2', this.char, null, this);
+            var charcost = this.game.add.button(537.5, 530, 'charcost2', this.char("fox"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
-            var charcost = this.game.add.button(675, 530, 'charcost2', this.char, null, this);
+            var charcost = this.game.add.button(675, 530, 'charcost2', this.char("dog"), null, this);
             charcost.anchor.setTo(0.5, 0.5);
+            */
             
             var style = { font: "24px Arial", fill: "#FFD700", align: "right" };
 
             var text = game.add.text(game.world._width-75, 55, window.money, style);
-
+            window.text = text
             text.anchor.set(0.5);
             
             var coin = this.game.add.sprite(757, 51, 'coin');
@@ -85,6 +127,22 @@ function gameStore(game) {
         
         playTheGame: function () {
             this.game.state.start('start');
+        },
+        char: function(character) {
+            return function() {
+                var price = window.characterPrice[character]
+
+                if (window.ownedCharacters.includes(character)) {
+                    window.currentCharacter = character
+                } 
+                else if (window.money >= price) {
+                    window.money -= price;
+                    window.ownedCharacters.push(character)
+                    window.currentCharacter = character
+                    game.state.start("store")
+                    text.setText(window.money)
+                }
+            }
         }
     }
 }
