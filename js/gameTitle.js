@@ -7,9 +7,13 @@ function gameTitle(game) {
             
             game.load.image('missions', 'images/missions2.png');
             
+<<<<<<< HEAD
             game.load.image('leaderboard', 'images/leader2.png');
             
             game.load.image('background','images/ml.jpg')
+=======
+            game.load.images('leaderboard', 'images/leader2.png');
+>>>>>>> alishia
         },
         
         create: function () {
@@ -31,25 +35,23 @@ function gameTitle(game) {
             /*
             var gameTitle = this.game.add.sprite(400, 100, 'gameTitle');
             gameTitle.anchor.setTo(0.5, 0.5);
-<<<<<<< HEAD
-
-
-=======
+            
+            
             */    
->>>>>>> new
-            var store = this.game.add.button(270, 450, 'store', this.store, null, this);
-
+            
             var playButton=
                 game.add.button(110,450,'play2',function (){
                     game.state.start('start')
                 })
 
-          
+            var store = this.game.add.button(270, 450, 'store', this.store, null, this);
+
+            var mission = this.game.add.button(440, 450, 'missions');
             
+            var leaderboard = this.game.add.button(600, 450, 'leaderboard', this.leader, null, this);
+
             
-            var missions = this.game.add.button(430, 450, 'missions', this.missions, null, this);
-            
-            var leaderboard = this.game.add.button(590, 450, 'leaderboard', this.leader, null, this);
+
         },
     
         playTheGame: function () {
