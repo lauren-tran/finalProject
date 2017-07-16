@@ -115,7 +115,6 @@ function gameStore(game) {
         menu: function () {
             this.game.state.start('title');
         },
-        
 
         playTheGame: function () {
             this.game.state.start('start');

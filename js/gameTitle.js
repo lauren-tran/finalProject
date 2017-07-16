@@ -54,7 +54,7 @@ function gameTitle(game) {
         },
         
         missions: function () {
-            this.game.state.start('mission');
+            this.game.state.start('missions');
         },
         
         leader: function () {

@@ -2,6 +2,7 @@ function startState(game) {
     var skeleton;
     var goldCollected;
     var score;
+    var scoreText;
     var text;
     var cursors;
     var setupPlatform;
@@ -43,7 +44,7 @@ function startState(game) {
             goldCollected = 0;
             score = 0;
             // setup world
-            game.world.setBounds(0, 0, 800, this.game.height + 5000);
+            game.world.setBounds(0, 0, 800, this.game.height + 10000);
 
             // setup physics
             game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -150,14 +151,14 @@ function startState(game) {
             };
             
             for (var t = 1; t <1000 ; t += 100){
-                this.makePlatform(t, game.world._height-50);
+                this.makePlatform(t-50, game.world._height-50);
             };
             
             //creates moving platforms
             //this.makeMovingPlatform(200, game.world._height-100, 0, 400)
             
             //generates moving platforms
-            for ( var h = 1; h < 100; h+=3){
+            for ( var h = 1; h < 500; h+=3){
                 var x = h % 2 == 0 ? 150 : 500;
                 this.makeMovingPlatform(x, game.world._height - (h*100), 0, 400);
             }
@@ -177,8 +178,11 @@ function startState(game) {
             gold.callAll('animations.play', 'animations', 'spin');
             
             var style = { font: "24px Arial", fill: "#000000", align: "right" };
-            text = game.add.text(20, 35, `Gold: ${goldCollected}`, style);
+            text = game.add.text(20, 60, `Gold: ${goldCollected}`, style);
             text.fixedToCamera = true;
+            
+            scoreText = game.add.text(20, 35, `Score: ${score}`, style);
+            scoreText.fixedToCamera = true;
             
             var pauseButton = this.game.add.button(750, 50, 'pause', this.togglePause, null, this);
             pauseButton.anchor.setTo(0.5, 0.5);
@@ -243,8 +247,10 @@ function startState(game) {
 
             if (maxHeight > window.maxHeight) {
                 window.maxHeight = maxHeight
-                score = Math.floor(maxHeight)
             }
+
+            score = Math.floor(maxHeight)
+            scoreText.setText(`Score: ${score}`)
         },
         
         makePlatform(x, y) {
