@@ -1,5 +1,6 @@
 function startState(game) {
     var skeleton;
+    var goldCollected;
     var score;
     var text;
     var cursors;
@@ -12,7 +13,9 @@ function startState(game) {
     var play;
     var restart;
     var mainMenu
-    
+    var maxHeight;
+    var startHeight;
+
     return {
         preload: function () {
             this.game.load.image('background', 'images/b.gif');
@@ -36,7 +39,8 @@ function startState(game) {
         
         create: function() {
             pause = false;
-            
+            maxHeight = 0; 
+            goldCollected = 0;
             score = 0;
             // setup world
             game.world.setBounds(0, 0, 800, this.game.height + 5000);
@@ -50,6 +54,7 @@ function startState(game) {
             // create player
 
             skeleton = game.add.sprite(this.game.width / 2, game.world._height - 125);
+            startHeight = skeleton.position.y;
             this.world.wrap( skeleton, skeleton.width / 2, false )
 
             
@@ -172,7 +177,7 @@ function startState(game) {
             gold.callAll('animations.play', 'animations', 'spin');
             
             var style = { font: "24px Arial", fill: "#000000", align: "right" };
-            text = game.add.text(20, 35, `Score: ${score}`, style);
+            text = game.add.text(20, 35, `Gold: ${goldCollected}`, style);
             text.fixedToCamera = true;
             
             var pauseButton = this.game.add.button(750, 50, 'pause', this.togglePause, null, this);
@@ -224,13 +229,22 @@ function startState(game) {
             }
         
             if (game.camera.y + game.height < skeleton.position.y) {
+                window.money += goldCollected
+                window.totalMoney += goldCollected
                 window.highScore.push(score);
-                window.money += score
-                window.totalMoney += score
                 this.state.start("gameOver", false, false, score);
             }
             
             game.physics.arcade.overlap(skeleton, gold, this.collectGold, null, this);
+                if (Math.abs(skeleton.position.y - startHeight) > Math.abs(maxHeight)) {
+                    maxHeight = Math.abs(skeleton.position.y - startHeight)
+                    console.log(maxHeight)
+                }
+
+            if (maxHeight > window.maxHeight) {
+                window.maxHeight = maxHeight
+                score = Math.floor(maxHeight)
+            }
         },
         
         makePlatform(x, y) {
@@ -251,8 +265,8 @@ function startState(game) {
         
         collectGold: function(player, coin) {    
             coin.kill ();
-            score = score+10;
-            text.setText(`Score: ${score}`);
+            goldCollected = goldCollected+10;
+            text.setText(`Gold: ${goldCollected}`);
         },
         
         togglePause: function () {

@@ -1,6 +1,7 @@
 
 window.money = 0;
 window.totalMoney = 0;
+window.maxHeight = 0;
 
 window.characters = ["construction", "scientist", "police", "medic", "agent", "policeWoman", "medicWoman", "skeleton", "fox", "dog"]
 
