@@ -2,11 +2,8 @@ function pause(game) {
     return {
         preload: function () {
             this.game.load.image('menuButton', 'images/menu2.png');
-                
             this.game.load.image('restartButton', 'images/restart2.png');
-                
             this.game.load.image('playButton', 'images/play2.png');
-                
             this.game.load.image('pauseScreen', 'images/pauseScreen.png');
         },
 

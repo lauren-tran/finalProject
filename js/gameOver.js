@@ -38,17 +38,11 @@ function gameOver(game) {
                 })
                 leaderboard.anchor.setTo(0.5,0.5);
             
-            
-            
             var mainMenu = 
-
                 game.add.button(600,490,"menu2", function (){
-
                     game.state.start('title')
-
                 })
                 mainMenu.anchor.setTo(0.5,0.5);
-        }
-        
+        }        
     }  
 }

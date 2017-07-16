@@ -4,25 +4,15 @@ function gameStore(game) {
     return {
         preload: function () {
             this.game.load.image('shop', 'images/shop.png');
-
             this.game.load.image('back', 'images/back2.png');
-            
             this.game.load.image('play', 'images/play3.png');
-            
             this.game.load.image('coin', 'images/coins2.png');
-            
             this.game.load.image('charcost', 'images/char_cost2.png');
-            
             this.game.load.image('charcost2', 'images/charcost2.png');
-            
             this.game.load.spritesheet('fox', 'images/animal2.png', 39.5, 41, -1, 5, 4);
-            
             this.game.load.spritesheet('skeleton', 'images/skeleton2.png', 65, 65);
-            
             this.game.load.spritesheet('char', 'images/char2.png', 50, 50);
-            
             this.game.load.spritesheet('pup', 'images/pups2.png', 50, 50);
-            
         },
         
         create: function () {
