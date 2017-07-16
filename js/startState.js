@@ -171,7 +171,7 @@ function startState(game) {
             
             gold = game.add.group();
             gold.enableBody = true;
-            for (var i = 0; i < 50; i++) {
+            for (var i = 0; i < 100; i++) {
                 gold.create(game.world.randomX, game.world.randomY, 'gold', 0);
             }
             gold.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5, 6, 7], 10, true);

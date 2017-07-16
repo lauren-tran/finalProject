@@ -9,6 +9,7 @@ function gameStore(game) {
             this.game.load.image('coin', 'images/coins2.png');
             this.game.load.image('charcost', 'images/char_cost2.png');
             this.game.load.image('charcost2', 'images/charcost2.png');
+            this.game.load.image('choose', 'images/choose.png');
             this.game.load.spritesheet('fox', 'images/animal2.png', 39.5, 41, -1, 5, 4);
             this.game.load.spritesheet('skeleton', 'images/skeleton2.png', 65, 65);
             this.game.load.spritesheet('char', 'images/char2.png', 50, 50);
@@ -33,9 +34,8 @@ function gameStore(game) {
                 console.log(125+(137.5*i))
                 
                 if (window.ownedCharacters.includes(char)) {
-                    var style = { font: "12px Arial", fill: "#FFFFFF"};
-                    var text = game.add.text(125+(137.5*i), 360, "already owned", style);
-                    text.anchor.set(0.5);
+                    var choose = this.game.add.button(125+(137.5*i), 360, 'choose', this.char(char), null, this);
+                    choose.anchor.setTo(0.5, 0.5);
                 } else if (window.characterPrice[char] === 100) {
                     var charcost = this.game.add.button(125+(137.5*i), 360, 'charcost', this.char(char), null, this);
                     charcost.anchor.setTo(0.5, 0.5);
@@ -53,9 +53,8 @@ function gameStore(game) {
                 console.log(char);
                 
                 if (window.ownedCharacters.includes(char)) {
-                    var style = { font: "12px Arial", fill: "#FFFFFF"};
-                    var text = game.add.text(125+(137.5*i), 530, "already owned", style);
-                    text.anchor.set(0.5);
+                    var choose = this.game.add.button(125+(137.5*i), 530, 'choose', this.char(char), null, this);
+                    choose.anchor.setTo(0.5, 0.5);
                 } else if (window.characterPrice[char] === 100) {
                     var charcost = this.game.add.button(125+(137.5*i), 530, 'charcost', this.char(char), null, this);
                     charcost.anchor.setTo(0.5, 0.5);
