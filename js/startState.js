@@ -16,6 +16,9 @@ function startState(game) {
     var mainMenu
     var maxHeight;
     var startHeight;
+    var platformHit;
+    var movingPlatform;
+    var stationaryPlatform;
 
     return {
         preload: function () {
@@ -43,6 +46,8 @@ function startState(game) {
             maxHeight = 0; 
             goldCollected = 0;
             score = 0;
+            platformHit = 0;
+            
             // setup world
             game.world.setBounds(0, 0, 800, this.game.height + 10000);
 
@@ -144,10 +149,18 @@ function startState(game) {
             skeleton.body.gravity.y = 900;
             
             setupPlatform = game.add.physicsGroup();
+            setupPlatform.enableBody = true
+            
+            stationaryPlatform = game.add.group();
+            stationaryPlatform.enableBody = true
+            
+            movingPlatform = game.add.group();
+            movingPlatform.enableBody = true
             
             //creates platforms
             for (var i = 1; i < 100; i +=3) {
-                this.makePlatform(500 * Math.random(), game.world._height - (i * 50));
+                var p = this.makePlatform(500 * Math.random(), game.world._height - (i * 50));
+                stationaryPlatform.add(p)
             };
             
             for (var t = 1; t <1000 ; t += 100){
@@ -159,7 +172,7 @@ function startState(game) {
             
             //generates moving platforms
             for ( var h = 1; h < 500; h+=3){
-                var x = h % 2 == 0 ? 150 : 500;
+                var x = h % 2 == 0 ? 200 : 400;
                 this.makeMovingPlatform(x, game.world._height - (h*100), 0, 400);
             }
             
@@ -210,7 +223,22 @@ function startState(game) {
         },
         
         update: function() {
+            game.physics.arcade.collide(skeleton, movingPlatform, function(skeleton, platform) {
+                if (platform.data.hit == undefined && skeleton.body.touching.down) {
+                    window.platformHit ++
+                    platform.data.hit = true
+                }
+            })
+            
+            game.physics.arcade.collide(skeleton, stationaryPlatform, function(skeleton, platform) {
+                if (platform.data.hit == undefined && skeleton.body.touching.down) {
+                    window.stationaryPlatformHit ++
+                    platform.data.hit = true
+                }
+            })
+            
             game.physics.arcade.collide(skeleton, setupPlatform)
+            
             game.world.wrap(skeleton, 0, true, true, true)
                 
             if (cursors.left.isDown) {
@@ -242,7 +270,6 @@ function startState(game) {
             game.physics.arcade.overlap(skeleton, gold, this.collectGold, null, this);
                 if (Math.abs(skeleton.position.y - startHeight) > Math.abs(maxHeight)) {
                     maxHeight = Math.abs(skeleton.position.y - startHeight)
-                    console.log(maxHeight)
                 }
 
             if (maxHeight > window.maxHeight) {
@@ -262,6 +289,7 @@ function startState(game) {
         
         makeMovingPlatform(x, y, xdiff, ydiff) {
             var p = this.makePlatform(x, y);
+            movingPlatform.add(p)
             var t = this.add.tween(p.position);
             t.to({ 
                 y: p.position.y - ydiff,

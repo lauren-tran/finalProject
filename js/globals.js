@@ -2,6 +2,9 @@
 window.money = 0;
 window.totalMoney = 0;
 window.maxHeight = 0;
+window.platformHit = 0;
+window.stationaryPlatformHit = 0;
+window.moving = 0;
 
 window.characters = ["construction", "scientist", "police", "medic", "agent", "policeWoman", "medicWoman", "skeleton", "fox", "dog"]
 
