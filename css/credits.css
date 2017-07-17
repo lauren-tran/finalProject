@@ -1,0 +1,15 @@
+h1{
+  font-size: 100px;  
+  font-family: serif;  
+    color: #FFFFFF;
+}
+
+h2 {
+    font-size: 50px;
+    font-family: serif;
+    color: #FFFFFF;
+}
+
+body {
+    background-color: black;
+}
