@@ -1,7 +1,7 @@
 class MissionHandler {
     constructor(levels, f) {
         this.progress = 0;
-        this.levels = false;
+        this.levels = levels;
         this.f = f;
         this.level = 0;
     }
@@ -13,7 +13,7 @@ class MissionHandler {
                 break;
             }
             
-            const current = this.levels.shitf();
+            const current = this.levels.shift();
             
             if (current.target > this.progress) {
                 this.levels.unshift(current);

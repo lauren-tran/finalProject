@@ -39,64 +39,112 @@ function missions(game) {
             var coin = this.game.add.sprite(757, 51, 'coin');
             coin.anchor.setTo(0.5, 0.5);
             
-            if (window.money > 500) {
-                var sprite = this.game.add.sprite (400, 200, 'complete');
-                sprite.anchor.setTo(0.5, 0,5);
-            } else if (window.money > 250) {
-                var sprite = this.game.add.sprite (400, 200, '50coins')
-                sprite.anchor.setTo(0.5, 0.5);
-                this
-            } else if (window.money > 100) {
-                var sprite = this.game.add.sprite (400, 200, '25coins')
-                sprite.anchor.setTo(0.5, 0.5);
-            } else {
-                var sprite = this.game.add.sprite (400, 200, '10coins')
-                sprite.anchor.setTo(0.5, 0.5);
+            switch (window.moneyMission.level) {
+                case 0: {
+                    let sprite = this.game.add.sprite (400, 200, '10coins')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                    
+                case 1: {
+                    let sprite = this.game.add.sprite (400, 200, '25coins')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                    
+                case 2: {
+                    let sprite = this.game.add.sprite (400, 200, '50coins')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                case 3: {
+                    let sprite = this.game.add.sprite (400, 200, 'complete');
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                default:
+                    throw new Error("WUT?")
             }
             
-            if (window.maxHeight > 50000) {
-                var sprite = this.game.add.sprite (400, 300, 'complete');
-                sprite.anchor.setTo(0.5, 0,5);
-            } else if (window.maxHeight > 20000) {
-                var sprite = this.game.add.sprite (400, 300, '50000pts')
-                sprite.anchor.setTo(0.5, 0.5);
-                this
-            } else if (window.maxHeight > 10000) {
-                var sprite = this.game.add.sprite (400, 300, '20000pts')
-                sprite.anchor.setTo(0.5, 0.5);
-            } else {
-                var sprite = this.game.add.sprite (400, 300, '10000pts')
-                sprite.anchor.setTo(0.5, 0.5);
+            switch (window.scoreMission.level) {
+                case 0: {
+                    let sprite = this.game.add.sprite (400, 300, '10000pts')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                    
+                case 1: {
+                    let sprite = this.game.add.sprite (400, 300, '20000pts')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                    
+                case 2: {
+                    let sprite = this.game.add.sprite (400, 300, '50000pts')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                case 3: {
+                    let sprite = this.game.add.sprite (400, 300, 'complete');
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                default:
+                    throw new Error("WUT?")
             }
             
-            if (window.platformHit > 50) {
-                var sprite = this.game.add.sprite (400, 400, 'complete');
-                sprite.anchor.setTo(0.5, 0,5);
-            } else if (window.platformHit > 25) {
-                var sprite = this.game.add.sprite (400, 400, '50moving');
-                sprite.anchor.setTo(0.5, 0.5);
-                this
-            } else if (window.platformHit > 10) {
-                var sprite = this.game.add.sprite (400, 400, '25moving');
-                sprite.anchor.setTo(0.5, 0.5);
-            } else {
-                var sprite = this.game.add.sprite (400, 400, '10moving')
-                sprite.anchor.setTo(0.5, 0.5);
+            switch (window.movingPlatformMission.level) {
+                case 0: {
+                    let sprite = this.game.add.sprite (400, 400, '10moving')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                    
+                case 1: {
+                    let sprite = this.game.add.sprite (400, 400, '25moving')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                    
+                case 2: {
+                    let sprite = this.game.add.sprite (400, 400, '50moving')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                case 3: {
+                    let sprite = this.game.add.sprite (400, 400, 'complete');
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                default:
+                    throw new Error("WUT?")
             }
             
-            if (window.stationaryPlatformHit > 50) {
-                var sprite = this.game.add.sprite (400, 500, 'complete');
-                sprite.anchor.setTo(0.5, 0,5);
-            } else if (window.stationaryPlatformHit > 25) {
-                var sprite = this.game.add.sprite (400, 500, '50platform')
-                sprite.anchor.setTo(0.5, 0.5);
-                this
-            } else if (window.stationaryPlatformHit > 10) {
-                var sprite = this.game.add.sprite (400, 500, '25platform')
-                sprite.anchor.setTo(0.5, 0.5);
-            } else {
-                var sprite = this.game.add.sprite (400, 500, '10platform')
-                sprite.anchor.setTo(0.5, 0.5);
+            switch (window.stationaryPlatformMission.level) {
+                case 0: {
+                    let sprite = this.game.add.sprite (400, 500, '10platform')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                    
+                case 1: {
+                    let sprite = this.game.add.sprite (400, 500, '25platform')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                    
+                case 2: {
+                    let sprite = this.game.add.sprite (400, 500, '50platform')
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                case 3: {
+                    let sprite = this.game.add.sprite (400, 500, 'complete');
+                    sprite.anchor.setTo(0.5, 0.5);
+                    break;
+                }
+                default:
+                    throw new Error("WUT?")
             }
         },
 

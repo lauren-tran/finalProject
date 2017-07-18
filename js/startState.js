@@ -265,9 +265,13 @@ function startState(game) {
             if (game.camera.y + game.height < skeleton.position.y) {
                 window.money += goldCollected
                 window.totalMoney += goldCollected
+                window.moneyMission.inc (goldCollected)
                 window.highScore.push(score);
+                window.scoreMission.inc (score)
                 window.platformHit += platformHit
+                window.movingPlatformMission.inc (platformHit)
                 window.stationaryPlatformHit += stationaryPlatformHit
+                window.stationaryPlatformMission.inc (stationaryPlatformHit)
                 this.state.start("gameOver", false, false, score);
             }
             
