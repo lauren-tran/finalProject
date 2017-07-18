@@ -19,6 +19,7 @@ function startState(game) {
     var platformHit;
     var movingPlatform;
     var stationaryPlatform;
+    var stationaryPlatformHit;
 
     return {
         preload: function () {
@@ -47,6 +48,7 @@ function startState(game) {
             goldCollected = 0;
             score = 0;
             platformHit = 0;
+            stationaryPlatformHit = 0;
             
             // setup world
             game.world.setBounds(0, 0, 800, this.game.height + 10000);
@@ -80,7 +82,7 @@ function startState(game) {
                 case "police":
                     skeleton.loadTexture("char")
                     skeleton.animations.add("walk_left", [18, 19, 20], 25)
-                    skeleton.animations.add("walk_right", [0, 31, 32], 25)
+                    skeleton.animations.add("walk_right", [30, 31, 32], 25)
                     skeleton.animations.add("stand", [8])
                     break;
                 case "medic":
@@ -225,14 +227,14 @@ function startState(game) {
         update: function() {
             game.physics.arcade.collide(skeleton, movingPlatform, function(skeleton, platform) {
                 if (platform.data.hit == undefined && skeleton.body.touching.down) {
-                    window.platformHit ++
+                    platformHit++;
                     platform.data.hit = true
                 }
             })
             
             game.physics.arcade.collide(skeleton, stationaryPlatform, function(skeleton, platform) {
                 if (platform.data.hit == undefined && skeleton.body.touching.down) {
-                    window.stationaryPlatformHit ++
+                    stationaryPlatformHit++
                     platform.data.hit = true
                 }
             })
@@ -263,7 +265,13 @@ function startState(game) {
             if (game.camera.y + game.height < skeleton.position.y) {
                 window.money += goldCollected
                 window.totalMoney += goldCollected
+                window.moneyMission.inc (goldCollected)
                 window.highScore.push(score);
+                window.scoreMission.inc (score)
+                window.platformHit += platformHit
+                window.movingPlatformMission.inc (platformHit)
+                window.stationaryPlatformHit += stationaryPlatformHit
+                window.stationaryPlatformMission.inc (stationaryPlatformHit)
                 this.state.start("gameOver", false, false, score);
             }
             
