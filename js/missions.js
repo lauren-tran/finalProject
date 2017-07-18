@@ -17,7 +17,7 @@ function missions(game) {
             this.game.load.image ('25platform','images/mission_platform25.png');
             this.game.load.image ('50platform','images/mission_platform50.png');
             this.game.load.image ('complete', 'images/missioncomplete.png');
-            this.game.load.image ('coin', 'images/coin2.png');
+            this.game.load.image ('coin', 'images/coins2.png');
         },
         
         create () {
@@ -39,7 +39,7 @@ function missions(game) {
             var coin = this.game.add.sprite(757, 51, 'coin');
             coin.anchor.setTo(0.5, 0.5);
             
-            if (window.money > 50) {
+            if (window.money > 500) {
                 var sprite = this.game.add.sprite (400, 200, 'complete');
                 sprite.anchor.setTo(0.5, 0,5);
             } else if (window.money > 250) {
